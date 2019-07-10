@@ -11,11 +11,7 @@ public class JacksonTest<T> {
 
         map.entrySet().forEach(System.out::println);
 
-        System.out.println(map.size());
-        for (Object key : map.keySet()) {
-            System.out.println("Key: " + key);
-        }
-
         test.mapSum(map);
+        test.mapMultiply(map);
     }
 }
