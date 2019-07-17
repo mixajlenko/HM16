@@ -1,39 +1,48 @@
 package org.hillel.homework16;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-public class JacksonDemo<T> {
-    
-    private double value;
+public class JacksonDemo {
+
+
+    public static void main(String[] args) throws IOException {
+        JacksonTask taskOne = new JacksonTask();
+        SecondTask taskTwo = new SecondTask();
+
+        /**
+         *
+         * Task 1
+         *
+         */
+        Map<Object, Object> map = new HashMap<Object, Object>(taskOne.getValues("prop.json"));
+        taskOne.mapSum((HashMap) map);
+        taskOne.mapMultiply((HashMap) map);
+
+        /**
+         *
+         * Task 2
+         *
+         */
+        List<Integer> list = new ArrayList();
+        taskTwo.listInitialization(list);
+        taskTwo.maxElementForSecondTAsk(list);
+        taskTwo.uniqueValuesForSecondTAsk(list);
+
+        /**
+         *
+         * Task 3
+         *
+         */
+        Map<Object, Object> map2 = new HashMap<Object, Object>(taskOne.getValues("prop2.json"));
 
 
 
-    public Map getValues(String json) throws IOException {
-        Map result =
-                new ObjectMapper().readValue(JacksonDemo.class.getResourceAsStream(json), Map.class);
-        return result;
-    }
 
-    public void mapSum(Map map) {
-        List valueList = new ArrayList(map.values());
-        System.out.print("Summ of all elements is: ");
-        value =
-                (int) valueList.get(0) +
-                (double) valueList.get(1) +
-                (int) valueList.get(2);
-        System.out.println(value);
-        
-    }
 
-    public void mapMultiply(Map map){
-        List<T> list = new ArrayList(map.values());
-        List arr = new ArrayList();
-        arr.add(value);
-        System.out.println(list);
-       //list.stream().map(i -> i * arr.get(0)).forEach(System.out::println);
+
     }
 }
-
